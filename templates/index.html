@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .btn {
+            background-color: DodgerBlue;
+            border: none;
+            color: white;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+    </style>
+    <title>
+
+    </title>
+</head>
+
+<body>
+    <p>Show ALl Files</p>
+    <br>
+    <br>
+
+    <form action="{{ url_for('submit_call') }}" method="post">
+        Enter Folder Name:- <input type="text" name="folder_path" value="{{folder_path}}">
+        <br>
+        <br>
+        <br>
+        {% for row in file_path %}
+
+        <div id="div_{{loop.index}}">
+        {{loop.index}}
+        <input type="text" name="file_path_new{{loop.index}}" value="{{row}}">
+        <input type="hidden" name="file_path_old{{loop.index}}" value="{{row}}">
+        <button type="button" class="btn" onclick="showhide('{{loop.index}}');"><i class="fa fa-trash"></i></button>
+
+
+        <button type="submit" name="index" value="{{loop.index}}">SUBMIT</button>
+        <br>
+        <br>
+
+        <br>
+    </div>
+        {% endfor %}
+    </form>
+
+
+</body>
+<script>  
+    function showhide(div_id)
+    {  
+         var div = document.getElementById("div_"+div_id);  
+         if (div.style.display !== "none") 
+         {  
+             div.style.display = "none";  
+         }  
+         else
+         {  
+             div.style.display = "block";  
+         }  
+    }  
+</script> 
+
+</html>
