@@ -10,7 +10,7 @@ file_root = 'data'
 @app.route('/')
 def get_all_files():
 
-    #1) Im loading all files from data folder.
+    #1) Im loading all files from data folder...
     onlyfiles = [f for f in listdir(file_root) if isfile(join(file_root, f))]
 
     #Itrate all files..
